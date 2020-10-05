@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+
+body {
+	font-family: 'Archivo Black', sans-serif;
+  }
+
+.home {
+	background-color: black;
+	display: grid;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	height: 38vh;
+}
