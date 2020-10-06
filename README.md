@@ -1,4 +1,12 @@
-# overland-league-project-pitch
+# Pitch to for League of Legends World Championship 2020 Project
+This repository is a pitch website to compel the product of live entertainment for an events company. 
+
+I built it with Preact on top of the following libraries: 
+* [styled-components](https://styled-components.com/)
+* [react-gsap](https://www.npmjs.com/package/react-gsap)
+* [moment](https://momentjs.com/)
+* [react-scrollmagic](https://www.npmjs.com/package/react-scrollmagic)
+
 
 ## CLI Commands
 

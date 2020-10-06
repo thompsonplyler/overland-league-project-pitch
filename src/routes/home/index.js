@@ -1,6 +1,15 @@
 import { h } from 'preact';
 import style from './style.css';
 import styled, { css } from 'styled-components'
+import moment from 'moment';
+import { countdown } from 'moment-countdown';
+// import { countdown } from 'moment-countdown'
+
+let halloween = moment().date(31).month(9);
+console.log(halloween)
+console.log(countdown)
+// halloween.countdown().toString();
+
 
 const PageDiv = styled.section`
 display: grid;
@@ -141,7 +150,7 @@ const Home = () => (
 		</PageDiv>
 
 		<PageDiv section9>
-			The Worlds group stage started October 3rd, 2020. So make no mistake: the clock is ticking.
+			The tournament officially started October 3rd, 2020. So make no mistake: the clock is ticking.
 		</PageDiv>
 
 		<PageDiv datelist>
@@ -160,7 +169,7 @@ const Home = () => (
 				<li>October 18</li>
 				<li>October 24</li>
 				<li>October 25</li>
-				<li>October 31</li>
+				<li><br />October 31</li>
 			</ul></PageDiv>
 	</div>
 );
