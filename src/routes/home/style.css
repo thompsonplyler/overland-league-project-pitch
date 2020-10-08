@@ -9,6 +9,46 @@ body {
 	display: grid;
 }
 
+.arrow {
+	position: absolute;
+	top: 25px;
+	width: 90%;
+	height: 10px;
+	background-color: #fff;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+	animation: arrow 700ms linear infinite;
+  }
+
+  .icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 80px;
+	height: 60px;
+	cursor: pointer;
+  }
+
+  .arrow::after, .arrow::before {
+	content: '';
+	position: absolute;
+	width: 60%;
+	height: 10px;
+	right: -8px;
+	background-color: #fff;
+  }
+  
+  .arrow::after {
+	top: -12px;
+	transform: rotate(45deg);
+  }
+  
+  .arrow::before {
+	top: 12px;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+	transform: rotate(-45deg);
+  }
+
 ul {
 	list-style: none;
 	background: rgb(255,248,0);
@@ -24,3 +64,17 @@ li {
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
+
+.spacer {
+	height: 10000px;
+}
+
+.video {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	bottom: 0;
+	width: 150%;
+	transform: translateX(-50%) translateY(-50%);
+	z-index: 1;
+ }

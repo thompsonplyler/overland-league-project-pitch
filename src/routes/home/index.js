@@ -3,11 +3,10 @@ import style from './style.css';
 import styled, { css } from 'styled-components'
 import moment from 'moment';
 import { countdown } from 'moment-countdown';
+import video from '../../assets/msg_video.mp4'
 // import { countdown } from 'moment-countdown'
 
-let halloween = moment().date(31).month(9);
-console.log(halloween)
-console.log(countdown)
+
 // halloween.countdown().toString();
 
 
@@ -119,6 +118,9 @@ const Home = () => (
 	<div class={style.home}>
 		<PageDiv section1>
 			eSports isn't coming.
+			<div class={style.icon}>
+				<div class={style.arrow}></div>
+			</div>
 		</PageDiv>
 
 		<PageDiv section2>
@@ -142,6 +144,11 @@ const Home = () => (
 		</PageDiv>
 
 		<PageDiv section7>
+			<div class={style.spacer}>
+				<video class={style.video}>
+					<source src={video}></source>
+				</video>
+			</div>
 			League of Legends has a global audience, and there is a hunger for this specific content in a live, entertaining form like the awesome program at Hudson Yards Backyard.
 		</PageDiv>
 
@@ -176,3 +183,7 @@ const Home = () => (
 
 export default Home;
 
+let spacer = document.querySelector('.spacer')
+let video1 = document.querySelector('.video')
+console.log(video1)
+console.log(spacer)
