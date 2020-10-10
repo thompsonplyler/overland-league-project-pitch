@@ -1,8 +1,15 @@
-import { h } from 'preact';
+import { Fragment, h } from 'preact';
 import style from './style.css';
-import styled, { css } from 'styled-components'
-import video from '../../assets/msg_video.mp4'
-
+import styled, { css } from 'styled-components';
+import video from '../../assets/msg_video.mp4';
+import { Reveal, Tween } from 'react-gsap';
+import { Controller, Scene } from 'react-scrollmagic';
+import pudongStadium from '../../assets/images/pudong_stadium.webp'
+import staplesCrowd from '../../assets/images/staples_crowd.webp'
+import summonersCup from '../../assets/images/summoners_cup.jpg'
+import cnbcShot from '../../assets/images/cnbc_shot.png'
+import msgCrowd from '../../assets/images/msg_crowd.webp'
+import hyBackyardGame from '../../assets/images/hy_backyard_game.jpg'
 
 const PageDiv = styled.section`
 display: grid;
@@ -20,10 +27,11 @@ order: 4;
 
 ${props => props.section1 &&
 		css`
-		position: relative;
 	z-index: 0;
-	top: 1vh;
 	order: 1;
+	background-image: url(${pudongStadium});
+	background-size: cover;
+	text-shadow: black 2px 2px;
 	`};
 
 ${props => props.section2 &&
@@ -31,6 +39,9 @@ ${props => props.section2 &&
 background: blue;
 order: 2;
 grid-row-start: 2;
+background-image: url(${staplesCrowd});
+	background-size: cover;
+	text-shadow: black 2px 2px;
 `}
 
 ${props => props.section3 &&
@@ -44,7 +55,7 @@ ${props => props.section4 &&
 		css`
 position: relative;
 order: 4;
-z-index: 0;
+z-index: 2;
 grid-row-start: 4;
 grid-column-end: 1;
 top: 1vh;
@@ -69,9 +80,11 @@ color: red;
 
 ${props => props.section5 &&
 		css`
-background: magenta;
+background-image: url(${summonersCup});
+background-size: cover;
 order: 5;
 grid-row-start: 5;
+text-shadow: black 2px 2px;
 `}
 
 ${props => props.section6 &&
@@ -79,6 +92,9 @@ ${props => props.section6 &&
 background: goldenrod;
 order: 6;
 grid-row-start: 6;
+background-image: url(${msgCrowd});
+background-size: cover;
+text-shadow: black 2px 2px;
 `}
 
 ${props => props.section7 &&
@@ -86,6 +102,9 @@ ${props => props.section7 &&
 background: aquamarine;
 order: 7;
 grid-row-start: 7;
+text-shadow: black 2px 2px;
+background-image: url(${hyBackyardGame});
+background-size: cover;
 `}
 
 ${props => props.section8 &&
@@ -103,17 +122,36 @@ grid-row-start: 9;
 grid-row-end: 10;
 `}
 
+`
 
+const ClassToggleStyled = styled.div`
+.section {
+	height: 30vh;
+}
 
+.test {
+	transition: width 0.3s ease-out;
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	margin: 0 !important
+}
 
+&.yellow {
+	background-color: yellow
+}
+
+.zap {
+	width: 100%
+}
 `
 
 const Home = () => (
 	<div class={style.home}>
 		<PageDiv section1>
 			eSports isn't coming.
-			<div class={style.icon}>
-				<div class={style.arrow}></div>
+			<div class={style.wrapper}>
+				<h1 class={style.glitch}></h1>
 			</div>
 		</PageDiv>
 
@@ -121,12 +159,21 @@ const Home = () => (
 			It's here.
 		</PageDiv>
 
-		<PageDiv section3>
-			There's a huge opportunity for Overland and its partners right now.
-		</PageDiv>
-
 		<PageDiv section4>
-			From now until the end of October, the biggest e-sports event in the world is happening: the League of Legends World Championship.
+			<Reveal repeat threshold={0}>
+				<Tween from={{ opacity: 0 }} duration={2}>
+					<p>From now until the end of October, the biggest e-sports event in the world is happening:
+						<Tween
+							to={{ color: 'goldenrod' }}
+							duration={10}
+						>
+							<span> the League of Legends World Championship.</span>
+						</Tween>
+					</p>
+				</Tween>
+			</Reveal>
+
+
 		</PageDiv>
 
 		<PageDiv section5>
@@ -134,16 +181,25 @@ const Home = () => (
 		</PageDiv>
 
 		<PageDiv section6>
-			It's not an exaggeration to say that final match is the Super Bowl of e-sports. It's an understatement.
+			<p>It's not an exaggeration to say that final match is the Super Bowl of e-sports.</p>
+			<img style={{
+				height: "25vh", "box-shadow": "black 2px 2px 2px"
+			}} src={cnbcShot}></img>
+			<Reveal repeat threshold={0}><Tween from={{ x: "70vw" }} to={{ opacity: 1, x: 0 }} duration={.5}>
+				<p>It's an understatement.</p>
+			</Tween></Reveal>
 		</PageDiv>
 
 		<PageDiv section7>
-
-			League of Legends has a global audience, and there is a hunger for this specific content in a live, entertaining form like the awesome program at Hudson Yards Backyard.
+			<Reveal repeat>
+				<Tween from={{ backgroundImage: `${msgCrowd}` }} to={{ backgroundImage: `${hyBackyardGame}` }} duration={5} >
+					<p>League of Legends has a global audience, and there is a hunger for this specific content in a live, entertaining form like the awesome program at Hudson Yards Backyard.</p>
+				</Tween>
+			</Reveal>
 		</PageDiv>
 
 		<PageDiv section8>
-			Given Overland's resources, I can the speak the language of the local audience in your marketing. I know where they congregate online, and I can put people in the seats, even in the pandemic.
+			We can the speak the language of the local NYC audience in your marketing. We can find them online, and we can put people in seats. Even in a pandemic.
 		</PageDiv>
 
 		<PageDiv section9>
@@ -152,23 +208,23 @@ const Home = () => (
 
 		<PageDiv datelist>
 			<ul>
-				<li>October 3</li>
-				<li>October 4</li>
-				<li>October 5</li>
-				<li>October 6</li>
-				<li>October 8</li>
-				<li>October 9</li>
-				<li>October 10</li>
-				<li>October 11</li>
-				<li>October 15</li>
-				<li>October 16</li>
-				<li>October 17</li>
-				<li>October 18</li>
-				<li>October 24</li>
-				<li>October 25</li>
-				<li><br />October 31</li>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 3</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 4</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 5</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 6</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 8</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 9</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 10</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 11</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 15</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 16</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 17</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 18</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 24</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 25</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li><br />October 31</li></Tween></Reveal>
 			</ul></PageDiv>
-	</div>
+	</div >
 );
 
 export default Home;
