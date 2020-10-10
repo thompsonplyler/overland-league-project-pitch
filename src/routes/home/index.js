@@ -222,9 +222,9 @@ const Home = () => (
 			<img style={{
 				height: "25vh", "box-shadow": "black 2px 2px 2px"
 			}} src={cnbcShot}></img>
-			<Reveal repeat threshold={0}><Tween from={{ x: "70vw" }} to={{ opacity: 1, x: 0 }} duration={.5}>
-				<p>It's an understatement.</p>
-			</Tween></Reveal>
+
+			<p>It's an understatement.</p>
+
 		</PageDiv>
 
 		<PageDiv section7>
