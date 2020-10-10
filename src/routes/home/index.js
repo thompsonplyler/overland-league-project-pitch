@@ -2,6 +2,8 @@ import { Fragment, h } from 'preact';
 import style from './style.css';
 import styled, { css } from 'styled-components';
 import video from '../../assets/msg_video.mp4';
+import size from '../../size'
+import device from '../../device'
 import { Reveal, Tween } from 'react-gsap';
 import { Controller, Scene } from 'react-scrollmagic';
 import pudongStadium from '../../assets/images/pudong_stadium.webp'
@@ -10,6 +12,11 @@ import summonersCup from '../../assets/images/summoners_cup.jpg'
 import cnbcShot from '../../assets/images/cnbc_shot.png'
 import msgCrowd from '../../assets/images/msg_crowd.webp'
 import hyBackyardGame from '../../assets/images/hy_backyard_game.jpg'
+import hyBackyardChairs from '../../assets/images/hy_backyard_chairs.jpg'
+import hyBackyardGeneric from '../../assets/images/hy_backyard_generic.jpg'
+
+
+console.log(device.mobileS)
 
 const PageDiv = styled.section`
 display: grid;
@@ -32,6 +39,10 @@ ${props => props.section1 &&
 	background-image: url(${pudongStadium});
 	background-size: cover;
 	text-shadow: black 2px 2px;
+
+	@media(${device.mobileS}){
+		background-position: 50% 50%;
+	}
 	`};
 
 ${props => props.section2 &&
@@ -82,9 +93,15 @@ ${props => props.section5 &&
 		css`
 background-image: url(${summonersCup});
 background-size: cover;
+background-color: darkblue;
 order: 5;
 grid-row-start: 5;
 text-shadow: black 2px 2px;
+
+@media(${device.mobileS}){
+	background-position: 50% 50%;
+	background-blend-mode: multiply;
+}
 `}
 
 ${props => props.section6 &&
@@ -92,34 +109,54 @@ ${props => props.section6 &&
 background: goldenrod;
 order: 6;
 grid-row-start: 6;
-background-image: url(${msgCrowd});
+background-image: url(${staplesCrowd});
 background-size: cover;
 text-shadow: black 2px 2px;
 `}
 
 ${props => props.section7 &&
 		css`
-background: aquamarine;
-order: 7;
-grid-row-start: 7;
-text-shadow: black 2px 2px;
-background-image: url(${hyBackyardGame});
-background-size: cover;
+		order: 7;
+		grid-row-start: 7;
+		background: darkblue;
+		text-shadow: black 2px 2px;
+		background-image: url(${msgCrowd});
+		background-blend-mode: multiply;
+		background-size: cover;
+		@media(${device.mobileS}){
+			background-position: 50% 50%;
+			
+		}
+}
+
 `}
 
 ${props => props.section8 &&
 		css`
-background: orange;
 order: 8;
 grid-row-start: 8;
+background: darkblue;
+background-image: url(${hyBackyardChairs});
+background-blend-mode: multiply;
+@media(${device.mobileS}){
+	background-position: 50% 50%;
+	background-blend-mode: multiply;}
+
 `}
 
 ${props => props.section9 &&
 		css`
-background: teal;
+background: darkblue;
 order: 9;
 grid-row-start: 9;
 grid-row-end: 10;
+background: darkred;
+background-image: url(${hyBackyardGeneric});
+background-blend-mode: multiply;
+@media(${device.mobileS}){
+	background-position: 50% 50%;
+	background-blend-mode: multiply;}
+
 `}
 
 `
@@ -177,7 +214,7 @@ const Home = () => (
 		</PageDiv>
 
 		<PageDiv section5>
-			While the current tournament lasts throughout the month, the World Final match happens on October 31.
+			<p>While the current tournament lasts throughout the month, the <span style={{ color: "goldenrod", "font-size": "6vh" }}>World Final match</span> happens on <span style={{ color: "goldenrod", "font-size": "6vh" }}>October 31.</span></p>
 		</PageDiv>
 
 		<PageDiv section6>
@@ -199,11 +236,11 @@ const Home = () => (
 		</PageDiv>
 
 		<PageDiv section8>
-			We can the speak the language of the local NYC audience in your marketing. We can find them online, and we can put people in seats. Even in a pandemic.
+			<p>We can the speak the language of the local NYC audience in your marketing. We can find them online, and we can put people in seats. <span style={{ color: "goldenrod", "font-size": "6vh" }}>Even in a pandemic.</span></p>
 		</PageDiv>
 
 		<PageDiv section9>
-			The tournament officially started October 3rd, 2020. So make no mistake: the clock is ticking.
+			<p>The tournament is happening even as you read this. Make no mistake: <span style={{ color: "goldenrod", "font-size": "6vh" }}>the clock is ticking.</span></p>
 		</PageDiv>
 
 		<PageDiv datelist>
@@ -220,9 +257,9 @@ const Home = () => (
 				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 16</li></Tween></Reveal>
 				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 17</li></Tween></Reveal>
 				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 18</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 24</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 25</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li><br />October 31</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={2}><li>October 24</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={2.5}><li>October 25</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={3}><li><br />October 31</li></Tween></Reveal>
 			</ul></PageDiv>
 	</div >
 );
