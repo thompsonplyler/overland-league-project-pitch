@@ -1,10 +1,11 @@
 import { Fragment, h } from 'preact';
 import style from './style.css';
 import styled, { css } from 'styled-components';
+import { ReactSVG } from 'react-svg'
 import video from '../../assets/msg_video.mp4';
 import size from '../../size'
 import device from '../../device'
-import { Reveal, Tween } from 'react-gsap';
+import { Reveal, Tween, Timeline, PlayState } from 'react-gsap';
 import { Controller, Scene } from 'react-scrollmagic';
 import pudongStadium from '../../assets/images/pudong_stadium.webp'
 import staplesCrowd from '../../assets/images/staples_crowd.webp'
@@ -14,6 +15,7 @@ import msgCrowd from '../../assets/images/msg_crowd.webp'
 import hyBackyardGame from '../../assets/images/hy_backyard_game.jpg'
 import hyBackyardChairs from '../../assets/images/hy_backyard_chairs.jpg'
 import hyBackyardGeneric from '../../assets/images/hy_backyard_generic.jpg'
+import landscapePhone from '../../assets/images/landscape_phone.svg'
 
 
 console.log(device.mobileS)
@@ -93,7 +95,7 @@ ${props => props.section5 &&
 		css`
 background-image: url(${summonersCup});
 background-size: cover;
-background-color: darkblue;
+background-color: rgba(0, 0,139, .6);
 order: 5;
 grid-row-start: 5;
 text-shadow: black 2px 2px;
@@ -112,13 +114,16 @@ grid-row-start: 6;
 background-image: url(${staplesCrowd});
 background-size: cover;
 text-shadow: black 2px 2px;
+background-color: rgba(0, 0,139, .8);
+background-blend-mode: multiply;
+
 `}
 
 ${props => props.section7 &&
 		css`
 		order: 7;
 		grid-row-start: 7;
-		background: darkblue;
+		background-color: rgba(0, 0,139, .8);
 		text-shadow: black 2px 2px;
 		background-image: url(${msgCrowd});
 		background-blend-mode: multiply;
@@ -135,9 +140,11 @@ ${props => props.section8 &&
 		css`
 order: 8;
 grid-row-start: 8;
-background: darkblue;
+background-color: rgba(0, 0,139, .6);
 background-image: url(${hyBackyardChairs});
 background-blend-mode: multiply;
+background-size: cover;
+text-shadow: black 2px 2px;
 @media(${device.mobileS}){
 	background-position: 50% 50%;
 	background-blend-mode: multiply;}
@@ -146,13 +153,13 @@ background-blend-mode: multiply;
 
 ${props => props.section9 &&
 		css`
-background: darkblue;
+		background-color: rgba(0, 0,139, .8);
 order: 9;
 grid-row-start: 9;
 grid-row-end: 10;
-background: darkred;
 background-image: url(${hyBackyardGeneric});
-background-blend-mode: multiply;
+background-size: cover;
+background-blend-mode: darken;
 @media(${device.mobileS}){
 	background-position: 50% 50%;
 	background-blend-mode: multiply;}
@@ -190,6 +197,17 @@ const Home = () => (
 			<div class={style.wrapper}>
 				<h1 class={style.glitch}></h1>
 			</div>
+			<div class={style.landscapeicontext}>
+				This site is best viewed in landscape mode.
+				<br />
+				<Timeline target={
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-phone-landscape" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" d="M1 4.5v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1zm-1 6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v6z" />
+						<path fill-rule="evenodd" d="M14 7.5a1 1 0 1 0-2 0 1 1 0 0 0 2 0z" />
+					</svg>}>
+					<Tween from={{ rotation: -90 }} to={{ rotation: 0 }} duration={2} repeat={-1} />
+				</Timeline>
+			</div>
 		</PageDiv>
 
 		<PageDiv section2>
@@ -219,9 +237,7 @@ const Home = () => (
 
 		<PageDiv section6>
 			<p>It's not an exaggeration to say that final match is the Super Bowl of e-sports.</p>
-			<img style={{
-				height: "25vh", "box-shadow": "black 2px 2px 2px"
-			}} src={cnbcShot}></img>
+			<img class={style.headlineimage} src={cnbcShot}></img>
 
 			<p>It's an understatement.</p>
 
@@ -259,7 +275,7 @@ const Home = () => (
 				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 18</li></Tween></Reveal>
 				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={2}><li>October 24</li></Tween></Reveal>
 				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={2.5}><li>October 25</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={3}><li><br />October 31</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={7}><li><br />October 31</li></Tween></Reveal>
 			</ul></PageDiv>
 	</div >
 );

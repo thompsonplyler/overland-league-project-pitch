@@ -84,3 +84,28 @@ li {
       clip: rect(random(150)+px, 350px, random(150)+px, 30px);}}
 }
 }
+
+.landscapeicontext {
+  justify-self: center;
+  font-size: 2vh;
+  max-width: 20vw;
+}
+
+.landscapeicontext > svg {
+  margin-left: 25%;
+  margin-right: 25%;
+  font-size: 15vh;
+  max-width: 20vw;
+}
+
+img.headlineimage {
+  height: 45vh;
+  box-shadow: black 2px 2px;
+}
+
+@media(max-width: 420px){
+	img.headlineimage {
+    height: 25vh
+  }
+}
+
