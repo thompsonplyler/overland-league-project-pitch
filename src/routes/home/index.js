@@ -1,12 +1,8 @@
-import { Fragment, h } from 'preact';
+
 import style from './style.css';
 import styled, { css } from 'styled-components';
-import { ReactSVG } from 'react-svg'
-import video from '../../assets/msg_video.mp4';
-import size from '../../size'
 import device from '../../device'
 import { Reveal, Tween, Timeline, PlayState } from 'react-gsap';
-import { Controller, Scene } from 'react-scrollmagic';
 import pudongStadium from '../../assets/images/pudong_stadium.webp'
 import staplesCrowd from '../../assets/images/staples_crowd.webp'
 import summonersCup from '../../assets/images/summoners_cup.jpg'
@@ -15,7 +11,7 @@ import msgCrowd from '../../assets/images/msg_crowd.webp'
 import hyBackyardGame from '../../assets/images/hy_backyard_game.jpg'
 import hyBackyardChairs from '../../assets/images/hy_backyard_chairs.jpg'
 import hyBackyardGeneric from '../../assets/images/hy_backyard_generic.jpg'
-import landscapePhone from '../../assets/images/landscape_phone.svg'
+import hyBackyardWide from '../../assets/images/hy_backyard_wide.png'
 
 
 console.log(device.mobileS)
@@ -141,7 +137,7 @@ ${props => props.section8 &&
 order: 8;
 grid-row-start: 8;
 background-color: rgba(0, 0,139, .6);
-background-image: url(${hyBackyardChairs});
+background-image: url(${hyBackyardWide});
 background-blend-mode: multiply;
 background-size: cover;
 text-shadow: black 2px 2px;
@@ -157,12 +153,27 @@ ${props => props.section9 &&
 order: 9;
 grid-row-start: 9;
 grid-row-end: 10;
-background-image: url(${hyBackyardGeneric});
+background-image: url(${hyBackyardChairs});
 background-size: cover;
 background-blend-mode: darken;
 @media(${device.mobileS}){
 	background-position: 50% 50%;
 	background-blend-mode: multiply;}
+
+`}
+
+${props => props.section10 &&
+		css`
+	background-color: rgba(0, 0,139, .8);
+order: 10;
+grid-row-start: 10;
+grid-row-end: 11;
+background-image: url(${hyBackyardGeneric});
+background-size: cover;
+background-blend-mode: darken;
+@media(${device.mobileS}){
+background-position: 50% 50%;
+background-blend-mode: multiply;}
 
 `}
 
@@ -197,6 +208,7 @@ const Home = () => (
 			<div class={style.wrapper}>
 				<h1 class={style.glitch}></h1>
 			</div>
+
 			<div class={style.landscapeicontext}>
 				This site is best viewed in landscape mode.
 				<br />
@@ -207,6 +219,7 @@ const Home = () => (
 					</svg>}>
 					<Tween from={{ rotation: -90 }} to={{ rotation: 0 }} duration={2} repeat={-1} />
 				</Timeline>
+
 			</div>
 		</PageDiv>
 
@@ -232,7 +245,7 @@ const Home = () => (
 		</PageDiv>
 
 		<PageDiv section5>
-			<p>While the current tournament lasts throughout the month, the <span style={{ color: "goldenrod", "font-size": "6vh" }}>World Final match</span> happens on <span style={{ color: "goldenrod", "font-size": "6vh" }}>October 31.</span></p>
+			<p>While the current tournament lasts throughout the month, the <span style={{ color: "goldenrod", "font-size": "6vh" }}>World Final match</span> happens on <span style={{ color: "goldenrod", "font-size": "6vh" }}>October 31 @ 6am EST</span></p>
 		</PageDiv>
 
 		<PageDiv section6>
@@ -259,23 +272,44 @@ const Home = () => (
 			<p>The tournament is happening even as you read this. Make no mistake: <span style={{ color: "goldenrod", "font-size": "6vh" }}>the clock is ticking.</span></p>
 		</PageDiv>
 
+		<PageDiv section10>
+			<h1>The Biggest Names in eSports:</h1>
+			<ul>
+				<li style={{ color: 'goldenrod' }}>League of Legends
+					<ul style={{ 'font-size': '4vh', color: 'white' }}><li>World Championship: 3 October 2020 - 31 October 2020</li></ul>
+				</li>
+				<li style={{ color: 'goldenrod' }}>Counter-Strike: Global Offensive
+					<ul>
+						<li style={{ 'font-size': '4vh', color: 'white' }}>Spring Major: 10 May 2021 - 23 May 2021</li>
+						<li style={{ 'font-size': '4vh', color: 'white' }}>Fall Major: 1 May 2021 - 14 May 2021</li>
+					</ul>
+				</li>
+				<li style={{ color: 'goldenrod' }}>Dota 2
+					<ul><li style={{ 'font-size': '4vh', color: 'white' }}>International: TBA</li></ul>
+				</li>
+				<li style={{ color: 'goldenrod' }}>Overwatch
+					<ul><li style={{ 'font-size': '4vh', color: 'white' }}>Overwatch World Cup: TBA</li></ul>
+				</li>
+			</ul>
+		</PageDiv>
+
 		<PageDiv datelist>
 			<ul>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 3</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 4</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 5</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 6</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 8</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 9</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 10</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 11</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 15</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 16</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 17</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li>October 18</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={2}><li>October 24</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={2.5}><li>October 25</li></Tween></Reveal>
-				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={7}><li><br />October 31</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li class={style.datelistli}>October 3</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li class={style.datelistli}>October 4</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li class={style.datelistli}>October 5</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li class={style.datelistli}>October 6</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li class={style.datelistli}>October 8</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li class={style.datelistli}>October 9</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li class={style.datelistli}>October 10</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li class={style.datelistli}>October 11</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li class={style.datelistli}>October 15</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li class={style.datelistli}>October 16</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li class={style.datelistli}>October 17</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={1.5}><li class={style.datelistli}>October 18</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={2}><li class={style.datelistli}>October 24</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={2.5}><li class={style.datelistli}>October 25</li></Tween></Reveal>
+				<Reveal repeat><Tween from={{ opacity: .5 }} to={{ opacity: 0 }} duration={7}><li class={style.datelistli}><br />October 31</li></Tween></Reveal>
 			</ul></PageDiv>
 	</div >
 );
